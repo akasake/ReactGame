@@ -1,45 +1,41 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Image, Button,Text, FormInput, FormLabel } from 'react-native';
-
+import {View, StyleSheet, Text} from 'react-native';
+import {Button, FormLabel, FormInput} from 'react-native-elements';
+import players from '../players';
 
 
 export default class SetPlayersScreen extends Component {
-    constructor () {
-        super();
-        this.state = {
-            playerOneName: '',
-            playerTwoName: ''
-        }
+    state = {
+        playerOneName: "",
+        playerTwoName: ""
     }
-    static navigationOptions = {
-        header: null,
-    };
+
     handleSubmit = () => {
-        this.props.onSubmit(this.state);
-        this.props.navigation.navigate('AddPlayerNames');
+        players[0].name = this.state.playerOneName;
+        players[1].name = this.state.playerTwoName;
+        this.props.navigation.navigate('ChooseStartingPlayer');
     };
+
     render() {
         return (
             <View style={ styles.container }>
                     <View style={styles.mainWrapper}>
+                        <Text>Fill in players names!</Text>
                         <View>
-                            <Text>Fill in players names!</Text>
-                            <View>
-                                <FormLabel>Player 1 Name</FormLabel>
-                                <FormInput value={this.state.playerOneName}
-                                onChangeText={(playerOneName) => this.setState({playerOneName})}
-                                placeholder="Name of Player 1" />
-                            </View>
-                            <View>
-                                <FormLabel>Player 2 Name</FormLabel>
-                                <FormInput value={this.state.playerTwoName}
-                                onChangeText={(playerTwoName) => this.setState({playerTwoName})}
-                                placeholder="Name of Player 2"/>
-                            </View>
-                            <Button 
+                            <FormLabel>Player 1 Name</FormLabel>
+                            <FormInput value={this.state.playerOneName}
+                            onChangeText={(playerOneName) => this.setState({playerOneName})}
+                            placeholder="Name of Player 1" />
+                        </View>
+                        <View>
+                            <FormLabel>Player 2 Name</FormLabel>
+                            <FormInput value={this.state.playerTwoName}
+                            onChangeText={(playerTwoName) => this.setState({playerTwoName})}
+                            placeholder="Name of Player 2"/>
+                        </View>
+                        <Button 
                             title="Start"
                             onPress={this.handleSubmit} />
-                        </View>
                     </View>
             </View>
         );

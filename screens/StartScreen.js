@@ -12,7 +12,7 @@ export default class StartScreen extends Component {
     };
 
     startGame() {
-        this.props.navigation.navigate('AddPlayerNames');
+        this.props.navigation.navigate('StartGame');
     };
   
     render() {

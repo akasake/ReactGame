@@ -41,9 +41,6 @@ export default class SettingsScreen extends React.Component {
         </Text>
         <Text>
         Wie als eerste al zijn streepjes uitgewist heeft, wint het spel.</Text>
-
-
-
       </ScrollView>
     );
   }
